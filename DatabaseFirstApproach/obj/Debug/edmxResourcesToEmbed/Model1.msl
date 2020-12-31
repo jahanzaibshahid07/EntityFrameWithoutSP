@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyClassModelStoreContainer" CdmEntityContainer="MyClassEntities">
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="MyClassModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Did" ColumnName="Did" />
+          <ScalarProperty Name="Dname" ColumnName="Dname" />
+          <ScalarProperty Name="Dlocation" ColumnName="Dlocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MyClassModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Eid" ColumnName="Eid" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="Esalary" ColumnName="Esalary" />
+          <ScalarProperty Name="Did" ColumnName="Did" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpKhis">
+      <EntityTypeMapping TypeName="MyClassModel.EmpKhi">
+        <MappingFragment StoreEntitySet="EmpKhi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpLhrs">
+      <EntityTypeMapping TypeName="MyClassModel.EmpLhr">
+        <MappingFragment StoreEntitySet="EmpLhr">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="MyClassModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="Same" ColumnName="Same" />
+          <ScalarProperty Name="Ssalary" ColumnName="Ssalary" />
+          <ScalarProperty Name="Sage" ColumnName="Sage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C1">
+      <EntityTypeMapping TypeName="MyClassModel.C1">
+        <MappingFragment StoreEntitySet="C1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="MyClassModel.Store.TVF1" FunctionImportName="TVF1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MyClassModel.TVF1_Result">
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
+          <ScalarProperty Name="Empname" ColumnName="Empname" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="Empsalary" ColumnName="Empsalary" />
+          <ScalarProperty Name="Deptno" ColumnName="Deptno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GrossSalary" FunctionName="MyClassModel.Store.GrossSalary" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyClassModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MyClass.dbo.Branch' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Branch">
+          <Property Name="Bid" Type="int" />
+          <Property Name="Bname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Blocation" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Did" />
+    </Key>
+    <Property Name="Did" Type="int" Nullable="false" />
+    <Property Name="Dname" Type="varchar" MaxLength="50" />
+    <Property Name="Dlocation" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MyClass.dbo.Emp' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Emp">
+          <Property Name="Empid" Type="int" />
+          <Property Name="Empname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Job" Type="nvarchar" MaxLength="50" />
+          <Property Name="Empsalary" Type="money" />
+          <Property Name="Deptno" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MyClass.dbo.EmpKhi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmpKhi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MyClass.dbo.EmpLhr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EmpLhr">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MyClass.dbo.Employee' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Employee">
+          <Property Name="Empid" Type="int" />
+          <Property Name="Empname" Type="char" MaxLength="10" />
+          <Property Name="Empsalary" Type="money" />
+          <Property Name="Empage" Type="tinyint" />
+        </EntityType>-->
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Eid" />
+    </Key>
+    <Property Name="Eid" Type="int" Nullable="false" />
+    <Property Name="Ename" Type="varchar" MaxLength="50" />
+    <Property Name="Esalary" Type="money" />
+    <Property Name="Did" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MyClass.dbo.Student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Sid" />
+    </Key>
+    <Property Name="Sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Same" Type="char" MaxLength="10" />
+    <Property Name="Ssalary" Type="money" />
+    <Property Name="Sage" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MyClass.dbo.C1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="C1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="salary" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MyClass.dbo.V1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V1">
+          <Property Name="Empid" Type="int" />
+          <Property Name="Empname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Job" Type="nvarchar" MaxLength="50" />
+          <Property Name="Empsalary" Type="money" />
+          <Property Name="Deptno" Type="int" />
+        </EntityType>-->
+  <Association Name="FK__Employees__Did__267ABA7A">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Did" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="Did" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="F_GROSSSAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GrossSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empid" Type="int" Mode="In" />
+    <Parameter Name="PF" Type="int" Mode="InOut" />
+    <Parameter Name="PT" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="TVF1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Job" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Empid" Type="int" />
+          <Property Name="Empname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Job" Type="nvarchar" MaxLength="50" />
+          <Property Name="Empsalary" Type="money" />
+          <Property Name="Deptno" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="MyClassModelStoreContainer">
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpKhi" EntityType="Self.EmpKhi" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmpKhi].[id] AS [id], 
+    [EmpKhi].[name] AS [name], 
+    [EmpKhi].[salary] AS [salary]
+    FROM [dbo].[EmpKhi] AS [EmpKhi]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EmpLhr" EntityType="Self.EmpLhr" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EmpLhr].[id] AS [id], 
+    [EmpLhr].[name] AS [name], 
+    [EmpLhr].[salary] AS [salary]
+    FROM [dbo].[EmpLhr] AS [EmpLhr]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Student" EntityType="Self.Student" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student].[Sid] AS [Sid], 
+    [Student].[Same] AS [Same], 
+    [Student].[Ssalary] AS [Ssalary], 
+    [Student].[Sage] AS [Sage]
+    FROM [dbo].[Student] AS [Student]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="C1" EntityType="Self.C1" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [C1].[id] AS [id], 
+    [C1].[name] AS [name], 
+    [C1].[salary] AS [salary]
+    FROM [dbo].[C1] AS [C1]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Employees__Did__267ABA7A" Association="Self.FK__Employees__Did__267ABA7A">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
